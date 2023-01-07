@@ -1,2 +1,2 @@
 Basic code completed.
-Customize?
+Customize? - Add subtle button effects on static profile?
