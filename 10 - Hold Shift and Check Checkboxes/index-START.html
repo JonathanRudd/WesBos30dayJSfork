@@ -96,7 +96,7 @@
   </div>
 
 <script>
-  //psudocode:
+  //psuedocode:
   // need a listener for the shift key (keydown and keyup)
 
 //   function shiftActive(event) {
@@ -108,14 +108,36 @@
 //   }
 // }
 //??
-
   // need a listener for the check boxes
 
-const checkboxes = document.querySelectorAll('.inbox input\
-  type="checkbox"]');
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
 
-  // listen to specific checkboxes and activate the ones in between
-  //- how to index specific .divs / items?
+
+  // save first checked as a variable
+let lastChecked;
+
+  function handleCheck(e) {
+
+    let inBetween = false;
+    if (e.shiftKey && this.checked) {
+
+      checkboxes.forEach(checkbox => {
+        console.log(checkbox);
+        if (checkbox === this || checkbox === lastChecked) {
+          inBetween = !inBetween;
+          console.log('checkinbetween');
+        }
+
+        if(inBetween) {
+          checkbox.checked = true;
+        }
+      });
+    }
+
+    lastChecked = this;
+  }
+
+checkboxes.forEach(checkbox => checkbox.addEventListener('click', handleCheck));
 
 
 </script>
